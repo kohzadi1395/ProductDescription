@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My Toolbox</title>
+	<style>
+		.toolbox {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: #f1f1f1;
+			overflow: hidden;
+		}
+
+		.toolbox button {
+			float: left;
+			display: block;
+			color: #333;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+			border: none;
+			background-color: inherit;
+			cursor: pointer;
+		}
+
+		.toolbox button:hover {
+			background-color: #ddd;
+		}
+
+		iframe {
+			width: 100%;
+			height: calc(100% - 50px);
+			border: none;
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+<div class="toolbox">
+	<button onclick="openPage('home.html')">Home</button>
+	<button onclick="openPage('about.html')">About</button>
+	<button onclick="openPage('contact.html')">Contact</button>
+</div>
+
+<iframe id="pageFrame"></iframe>
+
+<script>
+	function openPage(pageName) {
+		var pageFrame = document.getElementById("pageFrame");
+		pageFrame.src = pageName;
+	}
+</script>
+</body>
+</html>
