@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
     <title>Template2</title>
     <style>
         * {
             border: 0;
-            font-family: a;
+            font-family: a, serif;
             margin: 0;
             padding: 0;
         }
@@ -61,7 +61,6 @@
             background: rgb(16, 143, 73);
         }
 
-        .btn-remove,
         .btn-cancel {
             background: rgb(220, 61, 61);
         }
@@ -74,12 +73,6 @@
         .btn-execute {
             background: rgb(7, 88, 97);
             color: white;
-        }
-
-        .remove-img {
-            bottom: 10px;
-            display: none;
-            position: absolute;
         }
 
         .box-5 {
@@ -110,14 +103,14 @@
         }
 
         h2 {
-            font-family: 'Archivo';
+            font-family: Archivo, serif;
             font-size: 64px;
             font-style: normal;
             font-weight: 700;
             line-height: 80px;
         }
 
-        .edit-mode .border-inpute-style {
+        .edit-mode .border-input-style {
             border: 1px solid lightgray;
             border-radius: 5px;
         }
@@ -144,7 +137,7 @@
             width: 100%;
         }
 
-        .execute-mode .border-inpute-style {
+        .execute-mode .border-input-style {
             border: none;
         }
 
@@ -183,111 +176,73 @@
 <body>
 <main class="edit-mode">
     <div class="imgs mb-5 box-1">
-        <img src="https://via.placeholder.com/400x363" alt="" id="img-1" class="img-type1"
-             onclick="setModalData(this)"/>
+        <img alt="" class="img-type1" id="img-1" onclick="setModalData(this)"
+             src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png"/>
     </div>
     <div class="imgs mb-5 box-2">
         <div id="actionGroup01">
-            <button type="button" id="btn-img-01" class="btn btn-light btn-outline-dark" onclick="setModalData(this)">
+            <button class="btn btn-light btn-outline-dark" id="btn-img-01" onclick="setModalData(this)" type="button">
                 Image
             </button>
-            <button type="button" id="btn-carl-01" class="btn btn-light btn-outline-dark" onclick="setModalData(this)">
+            <button class="btn btn-light btn-outline-dark" id="btn-carl-01" onclick="setModalData(this)" type="button">
                 Carousel
             </button>
+            <button class="btn btn-light btn-outline-dark" id="btn-card-deck-01" onclick="setModalData(this)"
+                    type="button">
+                Card Deck
+            </button>
         </div>
-        <!--     <img src="https://picsum.photos/800/363" alt="" id="img-2" class="img-type2"
-          onclick="setModalData(this)"/>
-     <span class="carousel-control-next" >asdffasfdsda</span>
-
-        <button class="btn-success" style="width: 25px;height: 25px;position: relative;top: 10px;right: 10px">Image</button>
-        <button class="btn-success" style="width: 25px;height: 25px;position: absolute;top: 10px;right: 10px">Image</button>
-
-                <div class="w-100 d-lg-flex justify-content-center m-auto" style="border: red 1px solid; height: 100px">
-
-                    <button class="btn-success" style="width: 25px;height: 25px;position: absolute;top: 10px;right: 10px">Image</button>
-                    <button class="btn-success">carousel</button>
-                </div>
-
-
-
-
-
-                       <div id="carouselExampleInterval" class="carousel slide h-100 w-100" data-ride="carousel">
-                           <div class="carousel-inner">
-                               <div class="carousel-item active" data-interval="10000">
-                                   <img src="https://picsum.photos/800/363" class="d-block w-100" alt="...">
-                               </div>
-                               <div class="carousel-item" data-interval="2000">
-                                   <img src="https://picsum.photos/800/363" class="d-block w-100" alt="...">
-                               </div>
-                               <div class="carousel-item">
-                                   <img src="https://picsum.photos/800/363" class="d-block w-100" alt="...">
-                               </div>
-                           </div>
-                           <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval"
-                                   data-slide="prev">
-                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                               <span class="sr-only">Previous</span>
-                           </button>
-                           <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval"
-                                   data-slide="next">
-                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                               <span class="sr-only">Next</span>
-                           </button>
-                       </div>
-               -->
-
     </div>
     <div class="imgs mb-5 box-4">
-        <img src="https://via.placeholder.com/400x530" alt="" id="img-3" class="img-type2"
-             onclick="setModalData(this)"/>
+        <img alt="" class="img-type2" id="img-3" onclick="setModalData(this)"
+             src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png"/>
     </div>
     <div class="box-5 mb-5 d-flex gap-80-px">
         <div class="w-50">
             <div class="h-100">
-                <div class="h-100 border-inpute-style">
-                    <span id="text1" class="display-1" onclick="setModalData(this)">lorem ipsum dolor sit amet</span>
+                <div class="h-100 border-input-style">
+                    <span class="display-1" id="text1" onclick="setModalData(this)">lorem ipsum dolor sit amet</span>
                 </div>
             </div>
         </div>
         <div class="imgs w-50">
-            <img src="https://via.placeholder.com/400x400" alt="" id="img-4" class="img-type3"
-                 onclick="setModalData(this)"/>
+            <img alt="" class="img-type3" id="img-4" onclick="setModalData(this)"
+                 src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png"/>
         </div>
     </div>
     <div class="imgs mb-3">
         <div class="card-deck">
             <div class="card">
-                <img class="card-img-top img-type5" src="https://via.placeholder.com/400x271" alt="Card image cap"
+                <img alt="Card image cap" class="card-img-top img-type5 h100 w-100"
                      id="img-5"
-                     class="h100 w-100"
-                     onclick="setModalData(this)">
+                     onclick="setModalData(this)"
+                     src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png">
 
                 <div class="card-body">
-                    <h5 class="card-title" onclick="setModalData(this)" id="text2">Card title</h5>
-                    <p class="card-text" onclick="setModalData(this)" id="text3">This is a wider card with
+                    <h5 class="card-title" id="text2" onclick="setModalData(this)">Card title</h5>
+                    <p class="card-text" id="text3" onclick="setModalData(this)">This is a wider card with
                         supporting text below as a natural lead-in to additional content. This content is a little bit
                         longer.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top img-type5" src="https://via.placeholder.com/400x271" alt="Card image cap"
-                     id="img-6"
-                     onclick="setModalData(this)">
+                <img alt="Card image cap" class="card-img-top img-type5" id="img-6"
+                     onclick="setModalData(this)"
+                     src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png">
                 <div class="card-body">
-                    <h5 class="card-title" onclick="setModalData(this)" id="text4">Card title</h5>
-                    <p class="card-text" onclick="setModalData(this)" id="text5">This card has supporting text below as
+                    <h5 class="card-title" id="text4" onclick="setModalData(this)">Card title</h5>
+                    <p class="card-text" id="text5" onclick="setModalData(this)">This card has supporting text below as
                         a natural lead-in to additional
                         content.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top img-type5" src="https://via.placeholder.com/400x271" alt="Card image cap"
-                     id="img-7"
-                     onclick="setModalData(this)">
+                <img alt="Card image cap" class="card-img-top img-type5" id="img-7"
+                     onclick="setModalData(this)"
+                     src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png">
                 <div class="card-body">
-                    <h5 class="card-title" onclick="setModalData(this)" id="text6">Card title</h5>
-                    <p class="card-text" onclick="setModalData(this)" id="text7">This is a wider card with supporting
+                    <h5 class="card-title" id="text6" onclick="setModalData(this)">Card title</h5>
+                    <p class="card-text" id="text7" onclick="setModalData(this)">This is a wider card with supporting
                         text below as a natural lead-in to
                         additional
                         content. This card has even longer content than the first to show that equal height action.</p>
@@ -298,34 +253,34 @@
     <div class="imgs mb-3">
         <div class="card-deck">
             <div class="card">
-                <img class="card-img-top img-type5" src="https://via.placeholder.com/400x271" alt="Card image cap"
-                     id="img-8"
-                     onclick="setModalData(this)">
+                <img alt="Card image cap" class="card-img-top img-type5"
+                     onclick="setModalData(this)"
+                     src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png">
                 <div class="card-body">
-                    <h5 class="card-title" onclick="setModalData(this)" id="text8">Card title</h5>
-                    <p class="card-text" onclick="setModalData(this)" id="text9">This is a wider card with
+                    <h5 class="card-title" id="text8" onclick="setModalData(this)">Card title</h5>
+                    <p class="card-text" id="text9" onclick="setModalData(this)">This is a wider card with
                         supporting text below as a natural lead-in to additional content. This content is a little bit
                         longer.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top img-type5" src="https://via.placeholder.com/400x271" alt="Card image cap"
-                     id="img-9"
-                     onclick="setModalData(this)">
+                <img alt="Card image cap" class="card-img-top img-type5" id="img-9"
+                     onclick="setModalData(this)"
+                     src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png">
                 <div class="card-body">
-                    <h5 class="card-title" onclick="setModalData(this)" id="text10">Card title</h5>
-                    <p class="card-text" onclick="setModalData(this)" id="text11">This card has supporting text below as
+                    <h5 class="card-title" onclick="setModalData(this)">Card title</h5>
+                    <p class="card-text" onclick="setModalData(this)">This card has supporting text below as
                         a natural lead-in to additional
                         content.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top img-type5" src="https://via.placeholder.com/400x271" alt="Card image cap"
-                     id="img-10"
-                     onclick="setModalData(this)">
+                <img alt="Card image cap" class="card-img-top img-type5"
+                     onclick="setModalData(this)"
+                     src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png">
                 <div class="card-body">
-                    <h5 class="card-title" onclick="setModalData(this)" id="text12">Card title</h5>
-                    <p class="card-text" onclick="setModalData(this)" id="text13">This is a wider card with supporting
+                    <h5 class="card-title" onclick="setModalData(this)">Card title</h5>
+                    <p class="card-text" onclick="setModalData(this)">This is a wider card with supporting
                         text below as a natural lead-in to
                         additional
                         content. This card has even longer content than the first to show that equal height action.</p>
@@ -333,26 +288,121 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="default-img" value="<img class='card-img-top img-type5' src='https://via.placeholder.com/400x271' alt='...' id='img-6'  onclick='setModalData(this)'>">
+
+
+    <!--default-img-->
+    <img alt='...' class='card-img-top img-type5 d-none' id='default-img' onclick='setModalData(this)'
+         src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
+
+    <!--default-carousel-->
+    <div class='carousel slide h-100 w-100 d-none' data-ride='carousel'
+         id="default-carousel" onclick='setModalData(this)'>
+        <div class='carousel-inner'>
+            <div class='carousel-item active' data-interval='500'>
+                <img alt='...' class='d-block w-100' src='https://picsum.photos/800/363'>
+            </div>
+            <div class='carousel-item' data-interval='500'>
+                <img alt='...' class='d-block w-100' src='https://picsum.photos/800/363'>
+            </div>
+            <div class='carousel-item' data-interval='500'>
+                <img alt='...' class='d-block w-100' src='https://picsum.photos/800/363'>
+            </div>
+        </div>
+        <button class='carousel-control-prev' data-slide='prev' data-target='#carouselExampleInterval'
+                type='button'>
+            <span aria-hidden='true' class='carousel-control-prev-icon'></span>
+            <span class='sr-only'>Previous</span>
+        </button>
+        <button class='carousel-control-next' data-slide='next' data-target='#carouselExampleInterval'
+                type='button'>
+            <span aria-hidden='true' class='carousel-control-next-icon'></span>
+            <span class='sr-only'>Next</span>
+        </button>
+    </div>
+
+    <!--Idefault-card-deck-->
+    <div class='card-deck d-none' id="default-card-deck">
+        <div class='card'>
+            <img alt='Card image cap' class='card-img-top img-type5' id='img-8'
+                 onclick='setModalData(this)'
+                 src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
+            <div class='card-body'>
+                <h5 class='card-title' onclick='setModalData(this)'>Card title</h5>
+                <p class='card-text' onclick='setModalData(this)'>This is a wider card with
+                    supporting text below as a natural lead-in to additional content. This content is a little bit
+                    longer.</p>
+            </div>
+        </div>
+        <div class='card'>
+            <img alt='Card image cap' class='card-img-top img-type5'
+                 onclick='setModalData(this)'
+                 src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
+            <div class='card-body'>
+                <h5 class='card-title' id='text10' onclick='setModalData(this)'>Card title</h5>
+                <p class='card-text' id='text11' onclick='setModalData(this)'>This card has supporting text below as
+                    a natural lead-in to additional
+                    content.</p>
+            </div>
+        </div>
+        <div class='card'>
+            <img alt='Card image cap' class='card-img-top img-type5' onclick='setModalData(this)'
+                 src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
+            <div class='card-body'>
+                <h5 class='card-title' onclick='setModalData(this)'>Card title</h5>
+                <p class='card-text' onclick='setModalData(this)'>This is a wider card with supporting
+                    text below as a natural lead-in to
+                    additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+        </div>
+        <div class='card'>
+            <img alt='Card image cap' class='card-img-top img-type5'
+                 onclick='setModalData(this)'
+                 src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
+            <div class='card-body'>
+                <h5 class='card-title' onclick='setModalData(this)'>Card title</h5>
+                <p class='card-text' onclick='setModalData(this)'>This is a wider card with supporting
+                    text below as a natural lead-in to
+                    additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+        </div>
+        <div class='card'>
+            <img alt='Card image cap' class='card-img-top img-type5'
+                 onclick='setModalData(this)'
+                 src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
+            <div class='card-body'>
+                <h5 class='card-title' onclick='setModalData(this)'>Card title</h5>
+                <p class='card-text' onclick='setModalData(this)'>This is a wider card with supporting
+                    text below as a natural lead-in to
+                    additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+        </div>
+    </div>
+
     <!--Info Modal-->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div aria-hidden="true" class="modal fade" id="default-modal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Properties</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="textEnterd" id="label-modal"></label>
-                    <textarea name="" id="textEnterd" style="display: inline-block;"
-                              class="border-inpute-style min-h-100-px"></textarea>
-                    <input type="text" id="interUrl" style="display: none;" class="border-inpute-style min-h-50-px">
+                    <label id="label-modal"></label>
+                    <textarea class="border-input-style min-h-100-px" id="textEntered" name=""
+                              style="display: inline-block;"></textarea>
+                    <input class="border-input-style min-h-50-px" id="interUrl" style="display: none;" type="text">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="saveModalData()">
+                    <button class="btn btn-outline-success" onclick="saveModalData()" type="button">
                         Save
+                    </button>
+                    <button class="btn btn-light btn-outline-dark" onclick="saveModalData()" type="button">
+                        Reset
                     </button>
                 </div>
             </div>
@@ -360,17 +410,17 @@
     </div>
 
     <!-- Confirm Modal-->
-    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div aria-hidden="true" class="modal fade" id="default-confirmModal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
                     Are you sure to execute?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-cancel" data-dismiss="modal">
+                    <button class="btn btn-cancel" data-dismiss="modal" type="button">
                         No
                     </button>
-                    <button type="button" class="btn btn-save" onclick="execute()">
+                    <button class="btn btn-save" onclick="execute()" type="button">
                         Yes
                     </button>
                 </div>
@@ -378,9 +428,10 @@
         </div>
     </div>
     <div class="actions my-4">
-        <a id="btnSaveEditMode"
-           onclick="this.href = `data:text/html;charset=UTF-8,${encodeURIComponent(document.documentElement.outerHTML)}`"
-           href="#" download="page.html" class="btn-download">
+        <a class="btn-download"
+           download="page.html"
+           href="#" id="btnSaveEditMode"
+           onclick="this.href = `data:text/html;charset=UTF-8,${encodeURIComponent(document.documentElement.outerHTML)}`">
             Save Edit Mode
         </a>
         <button class="btn-execute" id="btnExecute" onclick="openConfirmModal()">
@@ -390,11 +441,15 @@
 </main>
 </body>
 <script>
-    let refrenceId = '';
+    let referenceId = '';
     let formType = 'text';
+    let parent;
 
     function setModalData(element) {
+        let interUrl = $(`#interUrl`);
+        let textEntered = $('#textEntered');
 
+        let modal = $('#default-modal');
         switch (element.tagName.toLowerCase()) {
             case "img":
                 formType = "img";
@@ -406,54 +461,66 @@
                 formType = "text";
         }
 
-        refrenceId = element.id;
-        $("#interUrl").val('');
-        $("#textEnterd").val('');
-
+        referenceId = element.id;
+        interUrl.val('');
+        textEntered.val('');
 
         switch (formType.toLowerCase()) {
             case "img":
-                $("#interUrl").css("display", "inline-block");
-                $("#textEnterd").css("display", "none");
-                document.getElementById('label-modal').innerText = 'Please enetr your URL image:';
-            case "image":
-                var parent = $(`#${refrenceId}`).parent().parent();
-                // var img = document.createElement('img');
-                // img.src = 'https://picsum.photos/800/363'; // Set the src attribute
-                // parent.append(img); // Append the image to parent div
-
-                parent.html($("#default-img").val());
-                var parent = $(`#${refrenceId}`).parent().remove();
+                interUrl.css("display", "inline-block");
+                textEntered.css("display", "none");
+                document.getElementById('label-modal').innerText = 'Please enter your URL image:';
                 break;
             case "text":
-                $("#interUrl").css("display", "none");
-                $("#textEnterd").css("display", "inline-block");
-                document.getElementById('label-modal').innerText = 'Please enetr your text:';
-                break;
-            case "carousel":
+                interUrl.css("display", "none");
+                textEntered.css("display", "inline-block");
+                document.getElementById('label-modal').innerText = 'Please enter your text:';
                 break;
         }
-
-        $("#modal").modal('show');
+        modal.modal('show');
     }
 
     function saveModalData() {
-
+        let textEntered = $('#textEntered');
+        let modal = $("#default-modal");
+        let defaultImage = $("#default-img");
+        let defaultCarousel = $("#default-carousel");
+        let defaultCardDeck = $("#default-card-deck");
+        let referenceIdElement = $(`#${referenceId}`);
         switch (formType.toLowerCase()) {
             case "img":
-                $(`#${refrenceId}`).attr("src", $('#interUrl').val());
-                $(`#btn-remove-${refrenceId}`).css("display", "inline-block");
+                referenceIdElement.attr("src", $('#interUrl').val());
                 break
             case "image":
-
+                let newImage = defaultImage.clone();
+                newImage.attr("id", 'img-' + $("*[class^='img-']").length++);
+                newImage.removeClass('d-none');
+                parent = referenceIdElement.parent().parent();
+                parent.html(newImage);
+                referenceIdElement.parent().remove();
                 break;
             case "text":
-                document.getElementById(refrenceId).innerText = $('#textEnterd').val();
+                referenceIdElement.text(textEntered.val());
                 break;
             case "carousel":
+                let newCarousel = defaultCarousel.clone();
+                newCarousel.attr("id", "carousel-" + $(".carousel").length++);
+                newCarousel.removeClass('d-none');
+                parent = referenceIdElement.parent().parent();
+                parent.html(newCarousel);
+                referenceIdElement.parent().remove();
+                break;
+            case "card deck":
+                let newCardDeck = defaultCardDeck.clone();
+                newCardDeck.attr("id", "card-deck-" + $(".card-deck").length++);
+                newCardDeck.removeClass('d-none');
+                parent = referenceIdElement.parent().parent();
+                parent.html(newCardDeck);
+                referenceIdElement.parent().remove();
                 break;
         }
-        $("#modal").modal('hide');
+        resetAllId();
+        modal.modal('hide');
     }
 
     function execute() {
@@ -467,74 +534,30 @@
         $("#confirmModal").modal('show');
     }
 
-
-    function gatherAndSavePageData() {
-        // Get all the input elements on the page
-        const inputElements = document.querySelectorAll('input');
-
-        // Get all the image elements on the page
-        const imageElements = document.querySelectorAll('img');
-
-        // Get all the elements with an id attribute on the page
-        const idElements = document.querySelectorAll('[id]');
-
-        // Create an empty array to hold the objects for each element
-        const elementObjects = [];
-
-        // Loop through all the input elements and add their objects to the array
-        inputElements.forEach(element => {
-            const elementObject = {
-                id: element.id,
-                tagName: element.tagName.toLowerCase(),
-                value: element.value
-            };
-            if (!elementObjects.find(obj => obj.id === element.id))
-                elementObjects.push(elementObject);
-        });
-
-        // Loop through all the image elements and add their objects to the array
-        imageElements.forEach(element => {
-            const elementObject = {
-                id: element.id,
-                tagName: element.tagName.toLowerCase(),
-                src: element.src
-            };
-            if (!elementObjects.find(obj => obj.id === element.id))
-                elementObjects.push(elementObject);
-        });
-
-        // Loop through all the elements with an id attribute and add their objects to the array
-        idElements.forEach(element => {
-            const elementObject = {
-                id: element.id,
-                tagName: element.tagName.toLowerCase(),
-                value: element.value || element.src
-            };
-            if (!elementObjects.find(obj => obj.id === element.id))
-                elementObjects.push(elementObject);
-        });
-
-        // Sort the objects in the array based on their id property
-        elementObjects.sort((a, b) => a.id.localeCompare(b.id));
-
-        // Convert the array of objects to a JSON string
-        const jsonString = JSON.stringify(elementObjects);
-
-        // Create a new hidden input element
-        const hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'pageData';
-        hiddenInput.value = jsonString;
-        hiddenInput.id = 'defaultValue';
-
-        // Add the hidden input element to the page
-        document.body.appendChild(hiddenInput);
-    }
-
     window.onload = function () {
-        gatherAndSavePageData();
+        resetAllId();
     }
 
+    function resetAllId() {
+        const count = {};
+        $("body").find("*").not("div").each(function () {
+            const $this = $(this);
+            if ($this.parents("[id^='default-']").length > 0) {
+                return; // skip elements that are children of elements with IDs starting with "default-"
+            }
+            if ($this.attr("id") && $this.attr("id").startsWith("default-")) {
+                return; // skip elements with IDs starting with "default-"
+            }
+            const tagName = $this.prop("tagName").toLowerCase();
+            if (!(tagName in count)) {
+                count[tagName] = 0;
+            }
+            count[tagName]++;
+            const newId = tagName + '-' + count[tagName];
+            $this.attr("id", newId);
+        });
+
+    }
 
     function addInput() {
         const inputDiv = document.createElement('div');
@@ -544,14 +567,14 @@
         document.body.appendChild(inputDiv);
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+<script crossorigin="anonymous"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script crossorigin="anonymous"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </html>
