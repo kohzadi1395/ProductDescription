@@ -34,11 +34,6 @@
             max-height: 363px !important;
         }
 
-        /*.img-type2 {height: 530px;}*/
-        .img-type2 {
-            max-height: 800px;
-        }
-
         .img-type5 {
             height: 271px;
         }
@@ -181,6 +176,34 @@
     </div>
     <div class="imgs mb-5 box-2">
         <div id="actionGroup01">
+            <button class="btn btn-light btn-outline-dark" id="btn-img-02" onclick="setModalData(this)" type="button">
+                Image
+            </button>
+            <button class="btn btn-light btn-outline-dark" id="btn-carl-02" onclick="setModalData(this)" type="button">
+                Carousel
+            </button>
+            <button class="btn btn-light btn-outline-dark" id="btn-card-deck-02" onclick="setModalData(this)"
+                    type="button">
+                Card Deck
+            </button>
+        </div>
+    </div>
+    <div class="imgs mb-5 box-2">
+        <div id="actionGroup02">
+            <button class="btn btn-light btn-outline-dark" id="btn-img-03" onclick="setModalData(this)" type="button">
+                Image
+            </button>
+            <button class="btn btn-light btn-outline-dark" id="btn-carl-03" onclick="setModalData(this)" type="button">
+                Carousel
+            </button>
+            <button class="btn btn-light btn-outline-dark" id="btn-card-deck-03" onclick="setModalData(this)"
+                    type="button">
+                Card Deck
+            </button>
+        </div>
+    </div>
+    <div class="imgs mb-5 box-2">
+        <div id="actionGroup03">
             <button class="btn btn-light btn-outline-dark" id="btn-img-01" onclick="setModalData(this)" type="button">
                 Image
             </button>
@@ -192,10 +215,6 @@
                 Card Deck
             </button>
         </div>
-    </div>
-    <div class="imgs mb-5 box-4">
-        <img alt="" class="img-type2" id="img-3" onclick="setModalData(this)"
-             src="https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png"/>
     </div>
     <div class="box-5 mb-5 d-flex gap-80-px">
         <div class="w-50">
@@ -291,7 +310,7 @@
 
 
     <!--default-img-->
-    <img alt='...' class='card-img-top img-type5 d-none' id='default-img' onclick='setModalData(this)'
+    <img alt='...' class='card-img-top d-none' id='default-img' onclick='setModalData(this)'
          src='https://www.rcdrilling.com/wp-content/uploads/2013/12/default-placeholder.png'>
 
     <!--default-carousel-->
@@ -363,6 +382,38 @@
         </div>
     </div>
 
+    <!--Image Modal-->
+    <div aria-hidden="true" class="modal fade" id="default-image-modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Properties</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="image-url">Enter Image URL:</label>
+                        <input class="form-control border-input-style min-h-50-px" id="image-url"
+                               type="text">
+                        <label for="image-height">Enter Image Height:</label>
+                        <input class="form-control border-input-style min-h-50-px" id="image-height" type="number"
+                               value="250">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-success" onclick="saveImageModalData()" type="button">
+                        Save
+                    </button>
+                    <button class="btn btn-light btn-outline-dark" type="button">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Card deck Modal-->
     <div aria-hidden="true" class="modal fade" id="default-card-deck-modal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
@@ -404,6 +455,7 @@
             </div>
         </div>
     </div>
+
     <div class="actions my-4">
         <a class="btn-download"
            download="page.html"
@@ -415,18 +467,18 @@
             execute
         </button>
     </div>
+
 </main>
 </body>
 <script>
     let referenceId = '';
     let formType = 'text';
     let parent;
+    let modal;
 
     function setModalData(element) {
         let interUrl = $(`#interUrl`);
         let textEntered = $('#textEntered');
-
-        let modal;
 
         switch (element.tagName.toLowerCase()) {
             case "img":
@@ -445,10 +497,8 @@
 
         switch (formType.toLowerCase()) {
             case "img":
-                modal = $('#default-modal');
-                interUrl.css("display", "inline-block");
-                textEntered.css("display", "none");
-                document.getElementById('label-modal').innerText = 'Please enter your URL image:';
+            case "image":
+                modal = $('#default-image-modal');
                 break;
             case "text":
                 modal = $('#default-modal');
@@ -456,16 +506,72 @@
                 textEntered.css("display", "inline-block");
                 document.getElementById('label-modal').innerText = 'Please enter your text:';
                 break;
-            default:
+            case 'card deck':
                 modal = $('#default-card-deck-modal');
+                break;
+            default:
+                modal = $('#default-modal');
         }
         modal.modal('show');
+    }
+
+    function addCarouselByButton(defaultCarousel, referenceIdElement) {
+        let newCarousel = defaultCarousel.clone();
+        newCarousel.attr("id", "carousel-" + $(".carousel").length++);
+        newCarousel.removeClass('d-none');
+        parent = referenceIdElement.parent().parent();
+        parent.html(newCarousel);
+        referenceIdElement.parent().remove();
+    }
+
+    function addCardByButton(defaultCardDeck, referenceIdElement, defaultCard) {
+        let newCardDeck = defaultCardDeck.clone();
+        newCardDeck.attr("id", "card-deck-" + $(".card-deck").length++);
+        newCardDeck.removeClass('d-none');
+        parent = referenceIdElement.parent().parent();
+
+        for (let i = 0; i < $("#card-number").val(); i++) {
+            let newCard = defaultCard.clone();
+            newCard.removeClass('d-none');
+            newCard.attr("id", "card-" + $(".card-").length++);
+            newCardDeck.append(newCard);
+        }
+
+        parent = referenceIdElement.parent().parent();
+        parent.html(newCardDeck);
+        referenceIdElement.parent().remove();
+    }
+
+    function saveImageModalData() {
+        let referenceElement = $("#" + referenceId);
+        let imageUrl = $("#image-url").val();
+        let imageHigh = $("#image-height").val();
+        let defaultImage = $("#default-img");
+        if (referenceId.startsWith("button")) {
+            let newImage = defaultImage.clone();
+            newImage.attr("id", 'img-' + $("*[class^='img-']").length++);
+            newImage.attr("src", imageUrl);
+            newImage.attr("height", imageHigh + "px");
+            newImage.removeClass('d-none');
+            parent = referenceElement.parent().parent();
+            parent.html(newImage);
+            if (referenceElement.parent().id.startsWith("actionGroup"))
+                referenceElement.parent().remove();
+        }
+        //todo: temp
+        else
+        {
+            // referenceElement.attr("id", 'img-' + $("*[class^='img-']").length++);
+            referenceElement.attr("src", imageUrl);
+            referenceElement.attr("height", imageHigh + "px");
+            referenceElement.removeClass('d-none');
+        }
+        modal.modal('hide');
     }
 
     function saveModalData() {
         let textEntered = $('#textEntered');
         let modal = $("#default-modal");
-        let defaultImage = $("#default-img");
         let defaultCarousel = $("#default-carousel");
         let defaultCardDeck = $("#default-card-deck");
         let defaultCard = $("#default-card");
@@ -475,43 +581,15 @@
                 referenceIdElement.attr("src", $('#interUrl').val());
                 break
             case "image":
-                let newImage = defaultImage.clone();
-                newImage.attr("id", 'img-' + $("*[class^='img-']").length++);
-                newImage.removeClass('d-none');
-                parent = referenceIdElement.parent().parent();
-                parent.html(newImage);
-                referenceIdElement.parent().remove();
                 break;
             case "text":
                 referenceIdElement.text(textEntered.val());
                 break;
             case "carousel":
-                let newCarousel = defaultCarousel.clone();
-                newCarousel.attr("id", "carousel-" + $(".carousel").length++);
-                newCarousel.removeClass('d-none');
-                parent = referenceIdElement.parent().parent();
-                parent.html(newCarousel);
-                referenceIdElement.parent().remove();
-
+                addCarouselByButton(defaultCarousel, referenceIdElement);
                 break;
             case "card deck":
-                let newCardDeck = defaultCardDeck.clone();
-                newCardDeck.attr("id", "card-deck-" + $(".card-deck").length++);
-                newCardDeck.removeClass('d-none');
-                parent = referenceIdElement.parent().parent();
-
-                for (let i = 0; i < $("#card-number").val(); i++) {
-                    let newCard=defaultCard.clone();
-                    newCard.removeClass('d-none');
-                    newCard.attr("id", "card-" + $(".card-").length++);
-                    newCardDeck.append(newCard);
-                }
-
-
-                parent = referenceIdElement.parent().parent();
-                parent.html(newCardDeck);
-                referenceIdElement.parent().remove();
-                modal = $('#default-card-deck-modal');
+                addCardByButton(defaultCardDeck, referenceIdElement, defaultCard);
                 break;
         }
         resetAllId();
