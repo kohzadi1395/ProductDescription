@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>My Toolbox</title>
-	<style>
-		.toolbox {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background-color: #f1f1f1;
-			overflow: hidden;
-		}
-
-		.toolbox button {
-			float: left;
-			display: block;
-			color: #333;
-			text-align: center;
-			padding: 14px 16px;
-			text-decoration: none;
-			font-size: 17px;
-			border: none;
-			background-color: inherit;
-			cursor: pointer;
-		}
-
-		.toolbox button:hover {
-			background-color: #ddd;
-		}
-
-		iframe {
-			width: 100%;
-			height: calc(100% - 50px);
-			border: none;
-			margin-top: 50px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <title>My Toolbox</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        iframe {
+            width: 100%;
+            height: 600px !important;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-<div class="toolbox">
-	<button onclick="openPage('home.html')">Home</button>
-	<button onclick="openPage('about.html')">About</button>
-	<button onclick="openPage('contact.html')">Contact</button>
+
+<nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="openPage('Templates\\template1.html')">Link 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="openFileLink">Open File</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<input type="file" id="fileInput" style="display:none;" accept="text/html">
+<div class="container-fluid h-100" style="border: 1px solid red">
+    <iframe id="pageFrame"></iframe>
 </div>
 
-<iframe id="pageFrame"></iframe>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-	function openPage(pageName) {
-		var pageFrame = document.getElementById("pageFrame");
-		pageFrame.src = pageName;
-	}
+    function openPage(pageName) {
+        const pageFrame = document.getElementById("pageFrame");
+        pageFrame.src = pageName;
+    }
+    $(document).ready(function() {
+        // handle nav-link click event
+        $("#openFileLink").click(function(e) {
+            e.preventDefault();
+            $("#fileInput").trigger("click");
+        });
+
+        // handle file input change event
+        $("#fileInput").change(function() {
+            var selectedFile = $(this).prop("files")[0];
+            if (selectedFile) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var fileContent = e.target.result;
+                    $("#pageFrame").attr("srcdoc", fileContent);
+                };
+                reader.readAsText(selectedFile);
+            }
+        });
+    });
 </script>
 </body>
 </html>
