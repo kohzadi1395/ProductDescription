@@ -340,7 +340,7 @@
     </div>
 
     <!--default-card-deck-->
-    <div class='card-deck d-none' id="default-card-deck">
+    <div class='card-deck d-none w-100' id="default-card-deck">
         <div class='card d-none' id="default-card">
             <img alt='Card image cap' class='card-img-top img-type5' id='img-8'
                  onclick='setModalData(this)'
@@ -426,13 +426,33 @@
                 </div>
                 <div class="modal-body">
                     <label>How many card do you need?</label>
-                    <input class="border-input-style" id="card-number" type="number" value="3">
+                    <input class="border-input-style" id="card-number" onchange="AddCardOption(this)" type="number"
+                           value="0">
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-outline-success" onclick="saveModalData()" type="button">
                         Save
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="card w-100 d-none mt-1" id="default-number-cards">
+        <div class="card-header ">
+            Card @number
+        </div>
+        <div class="card-body">
+            <div class="form-check form-check-inline">
+                <input checked class="form-check-input" id="Image" type="checkbox" value="Image">
+                <label class="form-check-label" for="Image">Image</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input checked class="form-check-input" id="Title" type="checkbox" value="Title">
+                <label class="form-check-label" for="Title">Title</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input checked class="form-check-input" id="Body" type="checkbox" value="Body">
+                <label class="form-check-label" for="Body">Body</label>
             </div>
         </div>
     </div>
@@ -528,18 +548,53 @@
         let newCardDeck = defaultCardDeck.clone();
         newCardDeck.attr("id", "card-deck-" + $(".card-deck").length++);
         newCardDeck.removeClass('d-none');
-        parent = referenceIdElement.parent().parent();
+        let parent = referenceIdElement.parent().parent();
 
-        for (let i = 0; i < $("#card-number").val(); i++) {
+        let cardNumbers = $('[id^="card-number-"]');
+        for (let i = 0; i < cardNumbers.length; i++) {
             let newCard = defaultCard.clone();
             newCard.removeClass('d-none');
             newCard.attr("id", "card-" + $(".card-").length++);
+
+            let titleChecked = true;
+            let bodyChecked = true;
+            $(cardNumbers[i]).find('input[type="checkbox"]').each(function() {
+                if ($(this).val() === "Image" && !$(this).prop('checked')) {
+                    newCard.find(".card-img-top").remove();
+                }
+
+                if ($(this).val() === "Title") {
+                    if ($(this).prop('checked')) {
+                        titleChecked = true;
+                    } else {
+                        titleChecked = false;
+                        newCard.find(".card-title").remove();
+                    }
+                }
+
+                if ($(this).val() === "Body") {
+                    if ($(this).prop('checked')) {
+                        bodyChecked = true;
+                    } else {
+                        bodyChecked = false;
+                        newCard.find(".card-text").remove();
+                    }
+                }
+                if (!titleChecked && !bodyChecked) {
+                    newCard.find(".card-body").remove();
+                    titleChecked = false;
+                    bodyChecked = false;
+                }
+            });
+
+
+
             newCardDeck.append(newCard);
         }
 
-        parent = referenceIdElement.parent().parent();
         parent.html(newCardDeck);
         referenceIdElement.parent().remove();
+        modal.modal('hide');
     }
 
     function saveImageModalData() {
@@ -553,18 +608,23 @@
             newImage.attr("src", imageUrl);
             newImage.attr("height", imageHigh + "px");
             newImage.removeClass('d-none');
+            newImage.removeClass(function (index, className) {
+                return (className.match(/\bimg-\S+/g) || []).join(' ');
+            });
             parent = referenceElement.parent().parent();
             parent.html(newImage);
             if (referenceElement.parent().id.startsWith("actionGroup"))
                 referenceElement.parent().remove();
         }
         //todo: temp
-        else
-        {
+        else {
             // referenceElement.attr("id", 'img-' + $("*[class^='img-']").length++);
             referenceElement.attr("src", imageUrl);
             referenceElement.attr("height", imageHigh + "px");
             referenceElement.removeClass('d-none');
+            referenceElement.removeClass(function (index, className) {
+                return (className.match(/\bimg-\S+/g) || []).join(' ');
+            });
         }
         modal.modal('hide');
     }
@@ -639,6 +699,27 @@
         inputDiv.appendChild(inputField);
         document.body.appendChild(inputDiv);
     }
+
+
+    function AddCardOption(element) {
+        $("#cards-properties").remove();
+        // Get the new number of cards from the input field
+        let newNumCards = document.getElementById("card-number").value;
+
+        // Update the numCards variable and add/remove card elements as needed
+        const cardDiv = document.createElement("div");
+        cardDiv.id = "cards-properties";
+        if (newNumCards) {
+            for (let i = 1; i <= newNumCards; i++) {
+                let cardNumber = $("#default-number-cards").clone();
+                cardNumber.attr("id", "card-number-" + i);
+                cardNumber.removeClass('d-none');
+                $(cardDiv).append(cardNumber.prop('outerHTML').replaceAll("@number", i));
+            }
+        }
+        $(element).parent().append(cardDiv);
+    }
+
 </script>
 <script crossorigin="anonymous"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
